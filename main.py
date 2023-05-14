@@ -1,6 +1,7 @@
 import math_questions
 import file_questions
 import oo_questions
+import games
 
 
 def run():
@@ -17,6 +18,9 @@ def run():
     for square in oo_questions.perfect_squares(30):
         # print each perfect square value
         print(square)
+
+    game = games.TicTacToe()
+    game.play()
 
 
 if __name__ == '__main__':
