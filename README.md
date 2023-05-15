@@ -1,5 +1,7 @@
 # Python Coding Challenges
 
+- [PDF Document with challenges](resources/code-questions-python-pdf.pdf)
+
 ---
 
 ## Challenges by biotech company:
