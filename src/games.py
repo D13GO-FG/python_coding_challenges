@@ -12,14 +12,21 @@ class TicTacToe:
             print()
 
     def get_move(self):
+        print("\n")
+        print('-' * 28)
         row = int(input(f"{self.current_player}, choose a row (1, 2, 3): "))
         col = int(input(f"{self.current_player}, choose a col (1, 2, 3): "))
+        print('-' * 28)
+        print("\n")
         return row, col
 
     def make_move(self, row, col):
         row, col = row - 1, col - 1
         if self.board[row][col] != " ":
+            print('-' * 28)
             print("Invalid move, try again")
+            print('-' * 28)
+            print("\n")
             return False
         self.board[row][col] = self.current_player
         return True
@@ -60,10 +67,19 @@ class TicTacToe:
         while not self.game_over():
             self.print_board()
             row, col = self.get_move()
-            self.make_move(row, col)
-            self.switch_player()
+            flaw = False
+            while not flaw:
+                flaw = self.make_move(row, col)
+                if flaw == True:
+                    self.switch_player()
+                else:
+                    break
+            # self.make_move(row, col)
+            # self.switch_player()
 
-        self.print_board
+        self.print_board()
+        print("\n")
+        print('-' * 28)
         winner = self.get_winner()
         if winner:
             print(f"{winner} wins!")
