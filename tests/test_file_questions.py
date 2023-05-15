@@ -1,13 +1,31 @@
+import os
 from src.file_questions import find_phrase_in_file, sum_csv_columns
 
 
 def test_find_phrasa_in_file():
-    actual_result = find_phrase_in_file(
-        "Mammography is a critical diagnostic tool for breast cancer, with the ability to detect the disease at its earliest stages.", "./resources/example.txt")
-    print(actual_result)
-    assert actual_result == True
+    # Create a test file and write a phrase in it
+    with open("test_file.txt", "w") as f:
+        f.write("Hello, world!")
+
+    # Test that the function returns True for the phrase in the file
+    assert find_phrase_in_file("Hello", "test_file.txt") == True
+
+    # Test that the function returns False for a phrase not in the file
+    assert find_phrase_in_file("Goodbye", "test_file.txt") == False
+
+    # Delete the test file
+    os.remove("test_file.txt")
 
 
 def test_sum_csv_columns():
-    assert sum_csv_columns(
-        0, "./resources/example.csv") == 15
+    # Create a test CSV file
+    with open("test_file.csv", "w") as f:
+        f.write("1,2,3\n4,5,6\n7,8,9")
+
+    # Test that the function returns the correct sum for each column
+    assert sum_csv_columns(0, "test_file.csv") == 12
+    assert sum_csv_columns(1, "test_file.csv") == 15
+    assert sum_csv_columns(2, "test_file.csv") == 18
+
+    # Delete the test file
+    os.remove("test_file.csv")
