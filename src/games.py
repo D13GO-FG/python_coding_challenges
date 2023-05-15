@@ -38,7 +38,7 @@ class TicTacToe:
         # check colums
         for col in range(3):
             if self.board[0][col] == self.board[1][col] == self.board[2][col] != " ":
-                return self.boardp[0][col]
+                return self.board[0][col]
         # check diagonal \
         if self.board[0][0] == self.board[1][1] == self.board[2][2] != " ":
             return self.board[0][0]
