@@ -16,16 +16,18 @@ def find_phrase_in_file(phrase, file_name):
 
 def sum_csv_columns(column, file_name):
     """Give a Comma Separated File (csv) and a column number (zero being the left most column) return the sum of all the entries in that column"""
-
-    # track the sum by columns.
-    total = 0
-    # open the file csv specified in read mode by default.
-    with open(file_name) as file:
-        # create a CSV reader object using the file.
-        reader = csv.reader(file)
-        # iterates through each row.
-        for row in reader:
-            # add the value of the row in correct column.
-            total += int(row[column])
-    # return total sum of the entries in the specified column.
-    return total
+    try:
+        # track the sum by columns.
+        total = 0
+        # open the file csv specified in read mode by default.
+        with open(file_name) as file:
+            # create a CSV reader object using the file.
+            reader = csv.reader(file)
+            # iterates through each row.
+            for row in reader:
+                # add the value of the row in correct column.
+                total += int(row[column])
+        # return total sum of the entries in the specified column.
+        return total
+    except:
+        print(f"Column {column} is out of range")
